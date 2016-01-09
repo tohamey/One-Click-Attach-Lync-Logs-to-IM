@@ -77,7 +77,7 @@ namespace ConsoleApplication1
                 // Store the file path as an object using the generic List class.
                 string myFileTransferPath = string.Empty;
                 // Edit this to provide a valid file path.
-                myFileTransferPath = @"C:\Temp\tempSkype4b\Skype4b_logs.zip";
+                myFileTransferPath = @"C:\temp\tempSkype4b\Skype4b_logs.zip";
 
                 // Create a generic List object to contain a contact URI.
 
