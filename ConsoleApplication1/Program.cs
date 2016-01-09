@@ -29,10 +29,6 @@ namespace ConsoleApplication1
         static string _zippedLogs = @"c:\temp\tempSkype4b\Skype4b_logs.zip";
         static string _lyncLogCopy = @"c:\temp\tempSkype4b\logs\lynclogfile.uccapilog";
         
-       
-   
-
-        
 
 
          static void Main(string[] args)
@@ -46,8 +42,7 @@ namespace ConsoleApplication1
             }
 
 
-
-            if (Directory.Exists(_logLocation_15))
+            else if (Directory.Exists(_logLocation_15))
             {
                 string[] _getLogFiles_15 = Directory.GetFiles(_logLocation_15, "*.uccapilog");
                 CopyLogFile(_getLogFiles_15);
@@ -67,19 +62,7 @@ namespace ConsoleApplication1
                 Console.WriteLine("Contact: {0}", args[1]);
             }
 
-
-
-           
-
-             
-
-
             //
-
-
-
-
-
             try
             {
                 // Create the major UI Automation objects.
@@ -111,12 +94,10 @@ namespace ConsoleApplication1
                 // Add file transfer conversation context type
                 _ModalitySettings.Add(AutomationModalitySettings.FilePathToTransfer, myFileTransferPath);
 
+                /*
+                need to add something here to make a confirmation before sending the file
+                */
                 // Start the conversation.
-
-
-
-
-
                 if (invitees != null)
                 {
                     IAsyncResult ar = _Automation.BeginStartConversation(
@@ -141,15 +122,13 @@ namespace ConsoleApplication1
             }
         }
 
-      
-
 
          static void CopyLogFile(string[] args)
          {
              foreach (string file in args)
              {
                  //copy the file and wait for the copy to finish
-                 Directory.Delete(@"C:\Temp\tempSkype4b",true);
+                 Directory.Delete(@"C:\temp\tempSkype4b",true);
                  Directory.CreateDirectory(Path.GetDirectoryName(_lyncLogCopy));
                  Task CopyLogFile = Task.Factory.StartNew(() => File.Copy(file, _lyncLogCopy, true));
                  CopyLogFile.Wait();
